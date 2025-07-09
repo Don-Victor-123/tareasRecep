@@ -13,7 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $stmt = $pdo->prepare("UPDATE notes SET state = ?, description = ? WHERE id = ?");
     $stmt->execute([$state, $description, $id]);
-    header("Location: note_details.php?id=$id");
+    if ($state === 'Realizada') {
+        header('Location: archived.php');
+    } else {
+        header("Location: note_details.php?id=$id");
+    }
     exit;
 }
 $stmt = $pdo->prepare("SELECT * FROM notes WHERE id = ?");

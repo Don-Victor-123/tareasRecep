@@ -13,6 +13,8 @@
         <a href="archived.php">Archivadas</a> |
         <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
             <a href="users.php">Usuarios</a> |
+        <?php else: ?>
+            <a href="users.php">Mi cuenta</a> |
         <?php endif; ?>
         <a href="logout.php">Cerrar sesión</a>
     </nav>
