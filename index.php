@@ -13,7 +13,9 @@ $stmt->execute();
 $notes = $stmt->fetchAll();
 $shifts = ['Matutino', 'Vespertino', 'Nocturno'];
 foreach ($shifts as $shift_name) {
-    echo "<h2>Turno $shift_name</h2>";
+    echo "<div class='shift'>";
+    echo "<h2 class='shift-header'>Turno $shift_name</h2>";
+    echo "<div class='shift-notes'>";
     foreach ($notes as $note) {
         if ($note['shift'] === $shift_name) {
             $title = htmlspecialchars($note['title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
@@ -24,4 +26,7 @@ foreach ($shifts as $shift_name) {
             echo "</div>";
         }
     }
-}include 'templates/footer.php';
+    echo "</div>"; // shift-notes
+    echo "</div>"; // shift
+}
+include 'templates/footer.php';
