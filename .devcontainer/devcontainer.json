@@ -14,3 +14,4 @@
   "forwardPorts": [80],
   "postCreateCommand": "composer install"
 }
+ 
