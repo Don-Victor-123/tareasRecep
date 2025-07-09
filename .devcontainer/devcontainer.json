@@ -11,7 +11,7 @@
     "bmewburn.vscode-intelephense-client",
     "ms-azuretools.vscode-docker"
   ],
-  "forwardPorts": [80],
-  "postCreateCommand": "composer install"
+  "forwardPorts": [80]
 }
  
+
