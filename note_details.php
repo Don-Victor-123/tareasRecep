@@ -20,7 +20,8 @@ $stmt = $pdo->prepare("SELECT * FROM notes WHERE id = ?");
 $stmt->execute([$id]);
 $note = $stmt->fetch();
 include 'templates/header.php';
-echo "<h2>{$note['title']}</h2>";
+$title = htmlspecialchars($note['title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+echo "<h2>{$title}</h2>";
 ?>
 <form method="POST">
     <label>Estado:
@@ -34,5 +35,4 @@ echo "<h2>{$note['title']}</h2>";
         <textarea name="description" rows="5"><?= htmlspecialchars($note['description']) ?></textarea>
     </label><br>
     <button type="submit">Guardar</button>
-</form>
-<?php include 'templates/footer.php'; ?>
+</form><?php include 'templates/footer.php'; ?>

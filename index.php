@@ -16,11 +16,12 @@ foreach ($shifts as $shift_name) {
     echo "<h2>Turno $shift_name</h2>";
     foreach ($notes as $note) {
         if ($note['shift'] === $shift_name) {
-            echo "<div class='task'>";
-            echo "<a href='note_details.php?id={$note['id']}'><strong>{$note['title']}</strong></a> ";
+            $title = htmlspecialchars($note['title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+            $stateClass = 'state-' . str_replace(' ', '_', $note['state']);
+            echo "<div class='task {$stateClass}'>";
+            echo "<a href='note_details.php?id={$note['id']}'><strong>{$title}</strong></a> ";
             echo "[{$note['state']}] <em>{$note['date']}</em>";
             echo "</div>";
         }
     }
-}
-include 'templates/footer.php';
+}include 'templates/footer.php';
