@@ -11,9 +11,9 @@ $stmt = $pdo->prepare("SELECT * FROM notes WHERE date < CURDATE() ORDER BY date 
 $stmt->execute();
 $notes = $stmt->fetchAll();
 foreach ($notes as $note) {
+    $title = htmlspecialchars($note['title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     echo "<div class='task'>";
-    echo "<a href='note_details.php?id={$note['id']}'><strong>{$note['title']}</strong></a> ";
+    echo "<a href='note_details.php?id={$note['id']}'><strong>{$title}</strong></a> ";
     echo "[{$note['state']}] <em>{$note['date']}</em>";
     echo "</div>";
-}
-include 'templates/footer.php'; ?>
+}include 'templates/footer.php'; ?>
