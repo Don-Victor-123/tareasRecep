@@ -11,7 +11,9 @@
     <nav>
         <a href="index.php">Inicio</a> |
         <a href="archived.php">Archivadas</a> |
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+            <a href="users.php">Usuarios</a> |
+        <?php endif; ?>
         <a href="logout.php">Cerrar sesión</a>
     </nav>
-</header>
-<main>
+</header><main>
